@@ -17,6 +17,17 @@ db.livros.save({titulo: "Lógica de Programação", valor: 20.00, autor: "Maria"
 db.livros.find({valor: {$gt: 200}})
 -0
 
-db.livros.find({valor: {$lte: 30}, valor: {$gte:10}})
+db.livros.find({ valor: {$gte: 10}, valor: {$lte:30}})
+db.livros.find({$and:[{ valor: {$gte: 10}, valor: {$lte:30}}]})
+- 4
 
-db.livros.find({$or:[{valor: {$gte: 10}}, {valor: {$lte:30}}]})
+db.livros.find({autor: "Fernando"})
+- 1
+
+db.livros.update({titulo: "PHP e MySQL"}, {$set: {valor: 175.00}})
+- 1
+
+db.livros.update({autor: "Paulo"}, {$set: {titulo: "Curso Completo de NodeJS"}})
+-1
+
+db.livros.updateMany({valor: {$lte: 30.00}}, {$set: {valor: 25.00}})
