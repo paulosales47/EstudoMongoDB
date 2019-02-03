@@ -1,0 +1,22 @@
+show dbs
+
+use blibioteca
+
+db.createCollection("livros")
+
+db.livros.save({titulo: "Introdução a linguagem de marcação HTML", valor: 25.00, autor: "João" })
+
+db.livros.save({titulo: "NodeJS do básico ao avançado", valor: 28.00, autor: "Paulo"})
+
+db.livros.save({titulo: "Android - criando apps reais", valor: 29.00, autor: "Lucas"})
+
+db.livros.save({titulo: "PHP e MySQL", valor: 190.00, autor: "Fernando"})
+
+db.livros.save({titulo: "Lógica de Programação", valor: 20.00, autor: "Maria"})
+
+db.livros.find({valor: {$gt: 200}})
+-0
+
+db.livros.find({valor: {$lte: 30}, valor: {$gte:10}})
+
+db.livros.find({$or:[{valor: {$gte: 10}}, {valor: {$lte:30}}]})

@@ -1,0 +1,33 @@
+mongo.exe
+
+show dbs
+
+db.[NOME_COLLECTION].find()
+db.[NOME_COLLECTION].findOne()
+db.[NOME_COLLECTION].find().pretty()
+
+
+db.alunos.find({nome: {$eq: "Paulo"}}) [nome = "Paulo"]
+
+db.alunos.find({idade: {$lt: 24}}) [idade < 24]
+
+db.alunos.find({idade: {$lte: 24}}) [idade <= 24]
+
+db.alunos.find({idade: {$gt: 24}}) [idade > 24]
+
+db.alunos.find({idade: {$gte: 24}}) [idade >= 24]
+
+db.alunos.find({idade: {$ne: 24}}) [idade != 24]
+
+db.alunos.find({sexo: {$eq: 'M'}, idade: {$gt:24}}) [sexo = 'M' and idade = 24]
+
+db.alunos.find({$or:[ {sexo: {$eq: 'M'}}, {idade: {$eq:24}}]})
+
+
+db.alunos.update({cpf: '430.441.538-75'}, {$set: {nome: 'Paulo Henrique'}})
+
+db.alunos.update({sexo: 'M'}, {$set: {sexo: 'Masculino'}}, {multi: true})
+
+db.alunos.update({cpf: '159.753.852-12'}, {$set: {sexo: 'Feminino', nome: 'Sofia Molimoto'}})
+
+db.alunos.remove({idade: {$lt: 24}})
