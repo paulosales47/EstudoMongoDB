@@ -31,3 +31,24 @@ db.alunos.update({sexo: 'M'}, {$set: {sexo: 'Masculino'}}, {multi: true})
 db.alunos.update({cpf: '159.753.852-12'}, {$set: {sexo: 'Feminino', nome: 'Sofia Molimoto'}})
 
 db.alunos.remove({idade: {$lt: 24}})
+
+IN
+db.livros.find({autor: {$in: ["Paulo", "Maria"]}})
+
+//DATA
+db.livros.insertOne({titulo: "Asp.NET Core 3.0", valor: 85, autor: "Quim", dtCadastro: new Date()})
+
+//VERIFICAR EXISTENCIA DO CAMPO
+db.livros.find({dtCadastro: {$exists: true}})
+
+//CRIAR COLEÇÃO COM VALIDAÇÃO
+db.createCollection("assuntos", { validator: {$or: [{assunto: "tec"}, {assunto: "hardware"}, {assunto: "games"}]}})
+
+//ERRO
+db.assuntos.insertOne({assunto: "mobile", dtCadastro: new Date(), redator: "Sofia"})
+
+//SUCESSO
+db.assuntos.insertOne({assunto: "games", dtCadastro: new Date(), redator: "Sofia"})
+
+
+
